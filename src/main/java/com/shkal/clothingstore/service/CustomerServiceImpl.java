@@ -22,8 +22,8 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     @Transactional
-    public Customer getCustomer(int id) {
-        return null;
+    public Customer getCustomerById(int id) {
+        return customerDAO.getCustomerById(id);
     }
 
     @Override
