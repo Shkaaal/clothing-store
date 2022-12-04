@@ -21,6 +21,18 @@ public class CustomerController {
         return customerList;
     }
 
+    @GetMapping("/customersOrderByName")
+    public List<Customer> getAllCustomersOrderByName() {
+        List<Customer> customerList = customerService.getAllCustomersOrderByName();
+        return customerList;
+    }
+
+    @GetMapping("/customersOrderBySurname")
+    public List<Customer> getAllCustomersOrderBySurname() {
+        List<Customer> customerList = customerService.getAllCustomersOrderBySurname();
+        return customerList;
+    }
+
     @GetMapping("/customers/{id}")
     public Customer getCustomerById(@PathVariable int id) {
         Customer customer = customerService.getCustomerById(id);
@@ -29,7 +41,6 @@ public class CustomerController {
             throw new NoSuchCustomerException("There is no Customer with ID = " +
                     id + " in Database");
         }
-
         return customer;
     }
 
@@ -54,7 +65,6 @@ public class CustomerController {
                     id + " in Database");
         }
         customerService.deleteCustomer(id);
-
         return "Customer with ID " + id + " was deleted";
     }
 }

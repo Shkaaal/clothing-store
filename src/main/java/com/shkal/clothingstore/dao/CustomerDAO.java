@@ -15,4 +15,8 @@ public interface CustomerDAO {
     public void updateCustomer(Customer customer);
 
     public void deleteCustomer(int id);
+
+    public List<Customer> getAllCustomersOrderByName();
+
+    public List<Customer> getAllCustomersOrderBySurname();
 }

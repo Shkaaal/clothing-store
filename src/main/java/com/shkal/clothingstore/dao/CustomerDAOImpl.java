@@ -49,4 +49,18 @@ public class CustomerDAOImpl implements CustomerDAO {
         query.setParameter("id", id);
         query.executeUpdate();
     }
+
+    @Override
+    public List<Customer> getAllCustomersOrderByName() {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Customer> query = session.createQuery("from Customer order by name", Customer.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Customer> getAllCustomersOrderBySurname() {
+        Session session = sessionFactory.getCurrentSession();
+        Query<Customer> query = session.createQuery("from Customer order by surname", Customer.class);
+        return query.getResultList();
+    }
 }

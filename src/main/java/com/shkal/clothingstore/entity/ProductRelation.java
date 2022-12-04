@@ -22,7 +22,6 @@ public class ProductRelation {
     @Column(name = "quantity")
     private int quantity;
 
-
     public ProductRelation(Order order, Product product, int quantity) {
         this.order = order;
         this.product = product;
