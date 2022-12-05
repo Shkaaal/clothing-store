@@ -10,32 +10,43 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class OrderDAOImpl implements OrderDAO{
+public class OrderDAOImpl implements OrderDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public List<Order> getAllOrders() {
+    public List getAllOrders() {
         Session session = sessionFactory.getCurrentSession();
-
-//        List<Order> orders = session.createQuery("from ", Order.class).getResultList();
-        Query<Order> orders = session.createQuery("from Order", Order.class);
-        return orders.getResultList();
+        Query query = session.createQuery("select od.order, od.product, od.quantity " +
+                "from Order as o inner join ProductRelation as od on o.id = od.id inner join Product as p on p.id = od.product" +
+                " order by od.order");
+        return query.getResultList();
     }
 
     @Override
-    public void saveNewOrder(Order order) {
-
+    public Order getOrderById(int id) {
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(Order.class, id);
     }
 
     @Override
-    public Order getOrder(int id) {
-        return null;
+    public void saveOrder(Order order) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(order);
+    }
+
+    @Override
+    public void updateOrder(Order order) {
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(order);
     }
 
     @Override
     public void deleteOrder(int id) {
-
+        Session session = sessionFactory.getCurrentSession();
+        Query<Order> query = session.createQuery("delete from Order where id =:id");
+        query.setParameter("id", id);
+        query.executeUpdate();
     }
 }

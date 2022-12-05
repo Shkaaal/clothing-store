@@ -5,11 +5,15 @@ import com.shkal.clothingstore.entity.Order;
 import java.util.List;
 
 public interface OrderService {
-    public List<Order> getAllOrders();
 
-    public void saveNewOrder(Order order);
+    public List getAllOrders();
 
-    public Order getOrder(int id);
+    public Order getOrderById(int id);
+
+    public void saveOrder(Order order);
+
+    public void updateOrder(Order order);
 
     public void deleteOrder(int id);
+
 }
