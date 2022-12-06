@@ -1,6 +1,5 @@
 package com.shkal.clothingstore.dao;
 
-import com.shkal.clothingstore.dto.OrderDTO;
 import com.shkal.clothingstore.entity.Order;
 
 import java.util.List;

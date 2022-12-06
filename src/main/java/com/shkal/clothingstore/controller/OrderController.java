@@ -30,7 +30,6 @@ public class OrderController {
             throw new NoSuchOrderException("There is no Order with ID = " +
                     id + " in Database");
         }
-
         return order;
     }
 
@@ -55,6 +54,7 @@ public class OrderController {
                     id + " in Database");
         }
 
+        orderService.deleteOrder(id);
         return "Order with ID " + id + " was deleted";
     }
 }

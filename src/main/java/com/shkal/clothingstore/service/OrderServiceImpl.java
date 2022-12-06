@@ -29,14 +29,13 @@ public class OrderServiceImpl implements OrderService {
 
         while (itr.hasNext()) {
             Object[] obj = (Object[]) itr.next();
-            Integer service1 = Integer.parseInt(String.valueOf(obj[0]));
-            Integer service2 = Integer.parseInt(String.valueOf(obj[1]));
-            Integer service3 = Integer.parseInt(String.valueOf(obj[2]));
+            int service1 = Integer.parseInt(String.valueOf(obj[0]));
+            int service2 = Integer.parseInt(String.valueOf(obj[1]));
+            int service3 = Integer.parseInt(String.valueOf(obj[2]));
 
             OrderDTO orderDTO = new OrderDTO(service1, service2, service3);
             listOrderDTO.add(orderDTO);
         }
-
         return listOrderDTO;
     }
 
