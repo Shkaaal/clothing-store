@@ -16,7 +16,6 @@ public class OrderDAOImpl implements OrderDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    @SuppressWarnings("unchecked")
     public List<Object> getAllOrders() {
         Session session = sessionFactory.getCurrentSession();
 

@@ -24,6 +24,14 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(data, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(NoSuchProductException.class)
+    public ResponseEntity<ProductIncorrectData> handlerException(NoSuchProductException exception) {
+        ProductIncorrectData data = new ProductIncorrectData();
+        data.setInfo(exception.getMessage());
+
+        return new ResponseEntity<>(data, HttpStatus.NOT_FOUND);
+    }
+
 //    @ExceptionHandler
 //    public ResponseEntity<CustomerIncorrectData> handlerExceptionForCustomer(Exception exception) {
 //        CustomerIncorrectData data = new CustomerIncorrectData();
