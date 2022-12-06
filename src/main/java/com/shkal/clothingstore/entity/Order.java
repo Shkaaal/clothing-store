@@ -1,5 +1,7 @@
 package com.shkal.clothingstore.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -47,6 +49,7 @@ public class Order {
         this.customer = customer;
     }
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public LocalDateTime getDate() {
         return date;
     }

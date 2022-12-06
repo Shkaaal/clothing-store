@@ -16,12 +16,18 @@ public class OrderDAOImpl implements OrderDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    public List getAllOrders() {
+    @SuppressWarnings("unchecked")
+    public List<Object> getAllOrders() {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select od.order, od.product, od.quantity " +
-                "from Order as o inner join ProductRelation as od on o.id = od.id inner join Product as p on p.id = od.product" +
-                " order by od.order");
-        return query.getResultList();
+
+        Query query = session.createQuery("select od.order.id, od.product.id, od.quantity " +
+                "from Order as o " +
+                "inner join ProductRelation as od on o.id = od.order.id " +
+                "inner join Product as p on p.id = od.product.id" +
+                " order by od.order.id");
+
+        List<Object> result = (List<Object>) query.list();
+        return result;
     }
 
     @Override

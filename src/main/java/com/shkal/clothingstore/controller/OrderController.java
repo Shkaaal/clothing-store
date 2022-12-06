@@ -1,5 +1,6 @@
 package com.shkal.clothingstore.controller;
 
+import com.shkal.clothingstore.dto.OrderDTO;
 import com.shkal.clothingstore.entity.Order;
 import com.shkal.clothingstore.exception_handling.NoSuchOrderException;
 import com.shkal.clothingstore.service.OrderService;
@@ -16,8 +17,8 @@ public class OrderController {
     OrderService orderService;
 
     @GetMapping("/orders")
-    public List getAllOrders() {
-        List orders = orderService.getAllOrders();
+    public List<OrderDTO> getAllOrders() {
+        List<OrderDTO> orders = orderService.getAllOrders();
         return orders;
     }
 
