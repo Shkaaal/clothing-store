@@ -16,6 +16,4 @@ public interface ProductService {
     public void saveProduct(Product product);
 
     public void updateProduct(Product product);
-
-    public void deleteProduct(int id);
 }

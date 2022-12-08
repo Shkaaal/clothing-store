@@ -23,7 +23,7 @@ public class Order {
     @Column(name = "date_time")
     private LocalDateTime date;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<ProductRelation> productRelations;
 
     public Order(Customer customer, LocalDateTime date) {

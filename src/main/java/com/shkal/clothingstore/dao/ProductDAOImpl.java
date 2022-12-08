@@ -1,6 +1,5 @@
 package com.shkal.clothingstore.dao;
 
-import com.shkal.clothingstore.entity.Customer;
 import com.shkal.clothingstore.entity.Product;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -53,16 +52,5 @@ public class ProductDAOImpl implements ProductDAO {
     public void updateProduct(Product product) {
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(product);
-    }
-
-    @Override
-    public void deleteProduct(int id) {
-        Session session = sessionFactory.getCurrentSession();
-//        Query query = session.createQuery("delete from Product where id =:id");
-//        query.setParameter("id", id);
-//        query.executeUpdate();
-
-        session.remove(session.get(Product.class, id));
-
     }
 }

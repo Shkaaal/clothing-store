@@ -30,8 +30,7 @@ public class Customer {
     @Column(name = "mail")
     private String mail;
 
-    @OneToMany(mappedBy = "customer", cascade = {CascadeType.DETACH, CascadeType.PERSIST,
-                                                 CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     List<Order> orders;
 
     public Customer(String name, String surname, String patronymic, String address, String phoneNumber, String mail) {

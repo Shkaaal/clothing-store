@@ -55,17 +55,4 @@ public class ProductController {
         productService.updateProduct(product);
         return product;
     }
-
-    @DeleteMapping("/products/{id}")
-    public String deleteProduct(@PathVariable int id) {
-        Product product = productService.getProductById(id);
-
-        if (product == null) {
-            throw new NoSuchProductException("There is no Product with ID = " +
-                    id + " in Database");
-        }
-
-        productService.deleteProduct(id);
-        return "Product with ID " + id + " was deleted";
-    }
 }

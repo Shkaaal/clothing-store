@@ -36,7 +36,6 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    @Transactional
     public void updateCustomer(Customer customer) {
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(customer);
