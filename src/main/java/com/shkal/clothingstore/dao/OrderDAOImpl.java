@@ -1,5 +1,6 @@
 package com.shkal.clothingstore.dao;
 
+import com.shkal.clothingstore.entity.Customer;
 import com.shkal.clothingstore.entity.Order;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -38,7 +39,7 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public void saveOrder(Order order) {
         Session session = sessionFactory.getCurrentSession();
-        session.save(order);
+        session.persist(order);
     }
 
     @Override
@@ -50,8 +51,10 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public void deleteOrder(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Query<Order> query = session.createQuery("delete from Order where id =:id");
-        query.setParameter("id", id);
-        query.executeUpdate();
+//        Query<Order> query = session.createQuery("delete from Order where id =:id");
+//        query.setParameter("id", id);
+//        query.executeUpdate();
+        session.remove(session.get(Order.class, id));
+
     }
 }

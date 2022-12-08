@@ -17,36 +17,42 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     @Override
     public List<Product> getAllProducts() {
-        return null;
+        return productDAO.getAllProducts();
     }
 
     @Transactional
     @Override
-    public List<Product> getAllProductsOrderByCost() {
-        return null;
+    public List<Product> getAllProductsOrderByCostAsc() {
+        return productDAO.getAllProductsOrderByCostAsc();
+    }
+
+    @Transactional
+    @Override
+    public List<Product> getAllProductsOrderByCostDesc() {
+        return productDAO.getAllProductsOrderByCostDesc();
     }
 
     @Transactional
     @Override
     public Product getProductById(int id) {
-        return null;
+        return productDAO.getProductById(id);
     }
 
     @Transactional
     @Override
     public void saveProduct(Product product) {
-
+        productDAO.saveProduct(product);
     }
 
     @Transactional
     @Override
     public void updateProduct(Product product) {
-
+        productDAO.updateProduct(product);
     }
 
     @Transactional
     @Override
     public void deleteProduct(int id) {
-
+        productDAO.deleteProduct(id);
     }
 }

@@ -1,6 +1,8 @@
 package com.shkal.clothingstore.entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -18,9 +20,9 @@ public class Product {
     private int manufacturerId;
     
     @Column(name = "price")
-    private int price;
+    private BigDecimal price;
     
-    public Product(String model, int manufacturerId, int price) {
+    public Product(String model, int manufacturerId, BigDecimal price) {
         this.model = model;
         this.manufacturerId = manufacturerId;
         this.price = price;
@@ -53,11 +55,11 @@ public class Product {
         this.manufacturerId = manufacturerId;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

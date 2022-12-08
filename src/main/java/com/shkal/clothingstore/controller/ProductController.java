@@ -21,9 +21,15 @@ public class ProductController {
         return productList;
     }
 
-    @GetMapping("/productsOrderByCost")
-    public List<Product> getAllProductsOrderByCost() {
-        List<Product> productList = productService.getAllProducts();
+    @GetMapping("/productsOrderByCostAsc")
+    public List<Product> getAllProductsOrderByCostAsc() {
+        List<Product> productList = productService.getAllProductsOrderByCostAsc();
+        return productList;
+    }
+
+    @GetMapping("/productsOrderByCostDesc")
+    public List<Product> getAllProductsOrderByCostDesc() {
+        List<Product> productList = productService.getAllProductsOrderByCostDesc();
         return productList;
     }
 
@@ -50,8 +56,8 @@ public class ProductController {
         return product;
     }
 
-    @DeleteMapping("/products")
-    public String deleteProduct(int id) {
+    @DeleteMapping("/products/{id}")
+    public String deleteProduct(@PathVariable int id) {
         Product product = productService.getProductById(id);
 
         if (product == null) {

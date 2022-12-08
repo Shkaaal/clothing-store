@@ -8,7 +8,9 @@ public interface ProductDAO {
 
     public List<Product> getAllProducts();
 
-    public List<Product> getAllProductsOrderByCost();
+    public List<Product> getAllProductsOrderByCostAsc();
+
+    public List<Product> getAllProductsOrderByCostDesc();
 
     public Product getProductById(int id);
 

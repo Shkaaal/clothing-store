@@ -15,14 +15,15 @@ public class Order {
     @Column(name = "order_id")
     private int id;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.PERSIST,
+            CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @Column(name = "date_time")
     private LocalDateTime date;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<ProductRelation> productRelations;
 
     public Order(Customer customer, LocalDateTime date) {
