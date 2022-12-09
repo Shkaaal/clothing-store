@@ -55,6 +55,19 @@ public class OrderDAOImpl implements OrderDAO {
 //        query.setParameter("id", id);
 //        query.executeUpdate();
         session.remove(session.get(Order.class, id));
+    }
 
+    public List<Object> searchOrdersByCustomerSurnameAndName(String surname, String name) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select c.name, c.surname, pd.product.id, pd.order.id, pd.quantity " +
+                                                    "from Customer c " +
+                                                    "join Order o on c.id = o.customer.id " +
+                                                    "join ProductRelation pd on o.id = pd.order.id " +
+                                                    "where c.name = :name and c.surname = :surname");
+        query.setParameter("name", name);
+        query.setParameter("surname", surname);
+
+        List<Object> list = (List<Object>) query.list();
+        return list;
     }
 }

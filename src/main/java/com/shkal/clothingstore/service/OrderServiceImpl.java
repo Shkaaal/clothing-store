@@ -63,4 +63,25 @@ public class OrderServiceImpl implements OrderService {
     public void deleteOrder(int id) {
         orderDAO.deleteOrder(id);
     }
+
+    @Override
+    @Transactional
+    public List<OrderDTO> searchOrdersByCustomerSurnameAndName(String surname, String name) {
+
+        Iterator itr = orderDAO.searchOrdersByCustomerSurnameAndName(surname, name).iterator();
+        List<OrderDTO> listOrderDTO = new ArrayList<>();
+
+        while (itr.hasNext()) {
+            Object[] obj = (Object[]) itr.next();
+            String service1 = String.valueOf(obj[0]);
+            String service2 = String.valueOf(obj[1]);
+            int service3 = Integer.parseInt(String.valueOf(obj[2]));
+            int service4 = Integer.parseInt(String.valueOf(obj[3]));
+            int service5 = Integer.parseInt(String.valueOf(obj[4]));
+
+            OrderDTO orderDTO = new OrderDTO(service1, service2, service3, service4, service5);
+            listOrderDTO.add(orderDTO);
+        }
+        return listOrderDTO;
+    }
 }

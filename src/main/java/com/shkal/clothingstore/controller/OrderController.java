@@ -57,4 +57,11 @@ public class OrderController {
         orderService.deleteOrder(id);
         return "Order with ID " + id + " was deleted";
     }
+
+    @GetMapping("orders/searchOrdersByCustomerSurnameAndName/")
+    public List<OrderDTO> searchOrdersByCustomerSurnameAndName(@RequestParam(value = "surname") String surname,
+                                                               @RequestParam(value = "name") String name) {
+        List<OrderDTO> listOrderDTO = orderService.searchOrdersByCustomerSurnameAndName(surname, name);
+        return listOrderDTO;
+    }
 }

@@ -17,4 +17,5 @@ public interface OrderService {
 
     public void deleteOrder(int id);
 
+    public List<OrderDTO> searchOrdersByCustomerSurnameAndName(String surname, String name);
 }

@@ -15,4 +15,6 @@ public interface OrderDAO {
     public void updateOrder(Order order);
 
     public void deleteOrder(int id);
+
+    public List<Object> searchOrdersByCustomerSurnameAndName(String surname, String name);
 }
