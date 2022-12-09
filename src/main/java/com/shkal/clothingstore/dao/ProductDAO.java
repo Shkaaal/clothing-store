@@ -17,4 +17,6 @@ public interface ProductDAO {
     public void saveProduct(Product product);
 
     public void updateProduct(Product product);
+
+    public List<Product> searchProductByName(String name);
 }

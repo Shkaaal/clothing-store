@@ -33,7 +33,7 @@ public class ProductController {
         return productList;
     }
 
-    @GetMapping("/products/{id}")
+    @GetMapping("/products/findById/{id}")
     public Product getProductById(@PathVariable int id) {
         Product product = productService.getProductById(id);
 
@@ -41,6 +41,12 @@ public class ProductController {
             throw new NoSuchProductException("There is no Product with ID = " +
                     id + " in Database");
         }
+        return product;
+    }
+
+    @GetMapping("/products/model/")
+    public List<Product> searchProductByName(@RequestParam(value = "name", required = false) String name) {
+        List<Product> product = productService.searchProductByName(name);
         return product;
     }
 

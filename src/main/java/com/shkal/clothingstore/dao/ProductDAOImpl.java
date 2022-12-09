@@ -53,4 +53,13 @@ public class ProductDAOImpl implements ProductDAO {
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(product);
     }
+
+    @Override
+    public List<Product> searchProductByName(String name) {
+        String temp = "select p from Product as p where p.model like concat('%',:name,'%')";
+        Session session = sessionFactory.getCurrentSession();
+        Query<Product> query = session.createQuery(temp);
+        query.setParameter("name", name);
+        return query.getResultList();
+    }
 }

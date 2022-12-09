@@ -49,4 +49,10 @@ public class ProductServiceImpl implements ProductService {
     public void updateProduct(Product product) {
         productDAO.updateProduct(product);
     }
+
+    @Transactional
+    @Override
+    public List<Product> searchProductByName(String name) {
+        return productDAO.searchProductByName(name);
+    }
 }
